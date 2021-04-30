@@ -1,0 +1,17 @@
+import React from "react";
+import UserMenu from "./1-1.user-menu/UserMenu";
+import { Link } from "react-router-dom";
+
+const Header = () => {
+  return (
+    <header className="header">
+      {/* <img src="" alt="Logo"/> */}
+      <Link to="/">
+        <h1 className="logo">Awesome Kanban Board</h1>
+      </Link>
+      <UserMenu />
+    </header>
+  );
+};
+
+export default Header;
