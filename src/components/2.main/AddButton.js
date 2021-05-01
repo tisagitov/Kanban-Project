@@ -1,30 +1,15 @@
 import React from "react";
 
-const AddButton = ({ showForm, setShowForm }) => {
+const AddButton = ({ setShowForm }) => {
   const onAdd = (e) => {
     e.preventDefault();
     setShowForm(true);
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-  };
-
   return (
-    <>
-      {showForm ? (
-        <input
-          type="submit"
-          value="Submit"
-          onSubmit={onSubmit}
-          className="btn btn--submit"
-        />
-      ) : (
-        <button className="btn" onClick={onAdd}>
-          + Add card
-        </button>
-      )}
-    </>
+    <button className="btn btn-add-card" onClick={onAdd}>
+      + Add card
+    </button>
   );
 };
 

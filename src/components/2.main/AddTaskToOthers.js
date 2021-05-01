@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import AddButton from "./AddButton";
 
-const AddTaskToOthers = ({ tasksToChoose, addTaskTo }) => {
-  const [label, setLabel] = useState("");
-  const [selected, setSelected] = useState("");
-  const [showForm, setShowForm] = useState(false);
+import DropDown from "./DropDown";
 
-  const handleChange = (e) => {
-    setLabel(e.target.label);
-    setSelected(e.target.value);
-  };
+const AddTaskToOthers = ({ tasksToChoose, addTaskTo }) => {
+  const [showForm, setShowForm] = useState(false);
+  const [selected, setSelected] = useState(null);
+  const [selectedId, setSelectedId] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (selected !== "") {
-      addTaskTo(selected);
+    if (selectedId != "" && selectedId != undefined) {
+      addTaskTo(selectedId);
       setShowForm(false);
-      setSelected("");
+      setSelectedId("");
+      setSelected(null);
     } else {
       document.querySelector(".add-task-dropdown").style.border =
         "2px solid red";
@@ -26,38 +24,20 @@ const AddTaskToOthers = ({ tasksToChoose, addTaskTo }) => {
 
   return (
     <>
-      {tasksToChoose && tasksToChoose.length > 0 ? (
+      {showForm && (
         <form className="add-task-form" onSubmit={onSubmit}>
-          {showForm && (
-            <select
-              label={label}
-              value={selected}
-              className="add-task-dropdown"
-              onChange={handleChange}
-              onFocus={() =>
-                (document.querySelector(".add-task-dropdown").style.border =
-                  "1px #0079bf solid")
-              }
-            >
-              <option value="" default disabled>
-                Select a task:
-              </option>
-              {tasksToChoose.map((task) => {
-                return (
-                  <option
-                    key={task.id}
-                    label={task.name}
-                    value={task.id}
-                    className="dropdown-option"
-                  >
-                    {task.name}
-                  </option>
-                );
-              })}
-            </select>
-          )}
-          <AddButton showForm={showForm} setShowForm={setShowForm} />
+          <DropDown
+            tasksToChoose={tasksToChoose}
+            selected={selected}
+            setSelected={setSelected}
+            selectedId={selectedId}
+            setSelectedId={setSelectedId}
+          />
+          <input type="submit" value="Submit" className="btn btn--submit" />
         </form>
+      )}
+      {tasksToChoose && tasksToChoose.length > 0 ? (
+        <>{!showForm && <AddButton setShowForm={setShowForm} />}</>
       ) : (
         <button className="btn btn--no-cards">No cards to add yet</button>
       )}

@@ -7,7 +7,7 @@ const TaskContainer = ({ title, children, tasksToChoose, addTaskTo }) => {
   return (
     <div className="task-container">
       <h2 className="task-container__title">{title}</h2>
-      <div class="tasks-and-form-wrapper">
+      <div className="tasks-and-form-wrapper">
         {children && children.length > 0 && (
           <ul className="tasks">
             {children.map((task) => {

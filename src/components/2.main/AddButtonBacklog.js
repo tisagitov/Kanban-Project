@@ -1,21 +1,15 @@
 import React from "react";
 
-const AddButtonBacklog = ({ showForm, setShowForm }) => {
+const AddButtonBacklog = ({ setShowForm }) => {
   const onAdd = (e) => {
     e.preventDefault();
     setShowForm(true);
   };
 
   return (
-    <>
-      {showForm ? (
-        <input type="submit" value="Submit" className="btn btn--submit" />
-      ) : (
-        <button className="btn" onClick={onAdd}>
-          + Add card
-        </button>
-      )}
-    </>
+    <button className="btn btn-add-card" onClick={onAdd}>
+      + Add card
+    </button>
   );
 };
 

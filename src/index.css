@@ -69,6 +69,7 @@ body {
 .user-menu__dropdown {
   position: absolute;
   top: 50px;
+  z-index: 1;
   margin-top: 11px;
   width: 134px;
   min-height: 60px;
@@ -85,10 +86,11 @@ body {
   position: absolute;
   top: 56px;
   right: 56px;
+  z-index: 3;
   background-color: #fff;
   width: 11px;
   height: 11px;
-  z-index: 1;
+  z-index: 2;
   transform: rotate(45deg);
 }
 
@@ -151,11 +153,13 @@ body {
 }
 
 .tasks {
+  overflow-y: auto;
   display: grid;
   grid-template-columns: 246px;
   grid-template-rows: auto;
   grid-gap: 15px;
-  margin-bottom: 0px;
+  margin-top: 11px;
+  padding: auto auto 4px auto;
   font-size: 18px;
 }
 
@@ -164,13 +168,21 @@ body {
   min-height: 35px;
   background-color: #fff;
   border-radius: 10px;
-  margin: 15px 12px auto;
+  margin: auto 12px auto;
   padding: 8px 7px;
   transition: outline 0.1s;
 }
 
 .task:hover {
   outline: 4px outset #0079bf;
+}
+
+.task:nth-of-type(1) {
+  margin-top: 4px;
+}
+
+.task:last-of-type {
+  margin-bottom: 4px;
 }
 
 .task:visited,
@@ -193,6 +205,11 @@ body {
 
 .btn:hover {
   background-color: #fff;
+}
+
+.btn-add-card {
+  margin: 8px auto 9px 12px;
+  padding-left: 0px;
 }
 
 .btn--no-cards {
@@ -218,7 +235,7 @@ body {
 }
 
 .add-task-form {
-  margin: 10px auto auto 13px;
+  margin: auto auto auto 13px;
 }
 
 .add-task-title {
@@ -247,6 +264,11 @@ body {
   color: transparent;
 }
 
+.add-task-dropdown__wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .add-task-dropdown {
   display: block;
   width: 246px;
@@ -255,17 +277,42 @@ body {
   margin: 15px 0 17px;
   padding: 8px 7px;
   font-size: 18px;
-  -webkit-appearance: none;
   background: url("./components/2.main/dropdown-arrow.png") no-repeat 97% 50%;
+  background-color: #fff;
 }
 
 .add-task-dropdown:hover {
-  border: 1px #0079bf solid;
+  box-shadow: 0 0 3pt 2pt #0079bf;
   cursor: pointer;
 }
 
 .add-task-dropdown:focus {
   outline: none;
+}
+
+.add-task-dropdown__options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  width: 246px;
+  border-radius: 10px;
+  margin: 3px 0 auto 0px;
+  padding: 8px auto;
+  font-size: 18px;
+}
+
+.add-task-dropdown__options-option {
+  width: 100%;
+  padding: 6px 7px;
+  line-height: 21px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-task-dropdown__options-option:hover {
+  background-color: #dedede;
 }
 
 /* TASK PAGE */

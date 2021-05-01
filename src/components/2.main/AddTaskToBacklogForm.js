@@ -45,9 +45,9 @@ const AddTaskToBacklogForm = () => {
   };
 
   return (
-    <form className="add-task-form" onBlur={onSubmit} onSubmit={onSubmit}>
-      {showForm && (
-        <>
+    <>
+      {showForm ? (
+        <form className="add-task-form" onBlur={onSubmit} onSubmit={onSubmit}>
           <h3 className="add-task-title">Add Task:</h3>
           <input
             className="add-task-form__input add-task-form__input--name"
@@ -73,10 +73,12 @@ const AddTaskToBacklogForm = () => {
               ).style.border = "1px solid #0079bf")
             }
           />
-        </>
+          <input type="submit" value="Submit" className="btn btn--submit" />
+        </form>
+      ) : (
+        <AddButtonBacklog setShowForm={setShowForm} />
       )}
-      <AddButtonBacklog showForm={showForm} setShowForm={setShowForm} />
-    </form>
+    </>
   );
 };
 
