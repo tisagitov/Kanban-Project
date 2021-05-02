@@ -12,7 +12,7 @@ const UserMenu = () => {
   return (
     <div className="user-menu" onClick={handleClick}>
       <div className="user-menu__pic-and-arrow">
-        <img className="user-menu__userpic" src={userPic} alt="User Picture" />
+        <img className="user-menu__userpic" src={userPic} />
         <img
           className={
             isClicked

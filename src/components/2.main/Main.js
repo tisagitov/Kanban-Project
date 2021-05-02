@@ -30,13 +30,13 @@ const Main = ({ setActiveAmount, setFinishedAmount }) => {
     if (backlogTasks) {
       setActiveAmount(backlogTasks.length);
     }
-  }, [backlogTasks]);
+  }, [backlogTasks, setActiveAmount]);
 
   useEffect(() => {
     if (finishedTasks) {
       setFinishedAmount(finishedTasks.length);
     }
-  }, [finishedTasks]);
+  }, [finishedTasks, setFinishedAmount]);
 
   /* ADD TASK FUNCTIONS */
 
@@ -102,26 +102,27 @@ const Main = ({ setActiveAmount, setFinishedAmount }) => {
   return (
     <AppContext.Provider value={{ addTaskBacklog }}>
       <Switch>
-        <main class="main">
-          <Route exact path="/">
-            <MainTasks
-              values={{
-                backlogTasks,
-                readyTasks,
-                addTaskReady,
-                inProgressTasks,
-                addTaskInProgress,
-                finishedTasks,
-                addTaskFinished,
-              }}
+        <main className="main--color">
+          <div className="main container">
+            <Route exact path="/">
+              <MainTasks
+                values={{
+                  backlogTasks,
+                  readyTasks,
+                  addTaskReady,
+                  inProgressTasks,
+                  addTaskInProgress,
+                  finishedTasks,
+                  addTaskFinished,
+                }}
+              />
+            </Route>
+            <Route
+              path="/tasks/:id"
+              render={(routerProps) => renderTasks(routerProps)}
             />
-          </Route>
-          <Route
-            path="/tasks/:id"
-            render={(routerProps) => renderTasks(routerProps)}
-          />
-
-          {/*  <Route path="">Not Found</Route> */}
+            {/*  <Route path="">Not Found</Route> */}
+          </div>
         </main>
       </Switch>
     </AppContext.Provider>

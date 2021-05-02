@@ -11,7 +11,7 @@ const AddTaskToOthers = ({ tasksToChoose, addTaskTo }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (selectedId != "" && selectedId != undefined) {
+    if (selectedId !== "" && selectedId !== undefined) {
       addTaskTo(selectedId);
       setShowForm(false);
       setSelectedId("");
