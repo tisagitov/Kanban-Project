@@ -118,15 +118,15 @@ body {
 }
 
 .main {
-  height: 588px;
+  height: 590px;
 }
 
 .main-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding: 20px 19px 32px;
+  padding: 20px 0 32px;
 }
 
 .task-container {
