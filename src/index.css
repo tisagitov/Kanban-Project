@@ -9,6 +9,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  min-height: 100vh;
 }
 
 .container {
@@ -26,7 +27,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 55px;
+  height: 7vh;
 }
 
 .logo {
@@ -118,7 +119,7 @@ body {
 }
 
 .main {
-  height: 590px;
+  height: 86vh;
 }
 
 .main-container {
@@ -131,7 +132,7 @@ body {
 
 .task-container {
   width: 282px;
-  max-height: 538px;
+  max-height: 70vh;
   background-color: #ebecf0;
   border-radius: 10px;
   margin-bottom: 50px;
@@ -143,7 +144,7 @@ body {
 
 .tasks-and-form-wrapper {
   overflow-y: auto;
-  max-height: 480px;
+  max-height: 65vh;
 }
 
 .tasks-and-form-wrapper::-webkit-scrollbar {
@@ -383,7 +384,7 @@ body {
   line-height: 21px;
   padding: 17px 19px 17px 21px;
   color: #fff;
-  height: 55px;
+  height: 7vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -398,6 +399,10 @@ body {
 
 /* RESPONSIVE STYLES */
 @media all and (max-width: 1200px) {
+  body {
+    min-height: auto;
+  }
+
   .container {
     max-width: 338px;
   }
@@ -407,7 +412,7 @@ body {
   }
 
   .header {
-    height: auto;
+    height: 7vh;
   }
 
   .logo {
@@ -443,7 +448,7 @@ body {
   .footer {
     flex-direction: column;
     height: auto;
-    padding-left: 0;
+    padding-left: 5px;
   }
 
   .footer__tasks {
@@ -452,13 +457,14 @@ body {
   }
 
   .footer__task {
+    padding-left: 15px;
     align-self: flex-end;
     width: 200px;
     margin-bottom: 10px;
   }
 
   .footer__credits {
-    align-self: flex-start;
+    align-self: center;
     margin-left: 0;
     margin-top: 7px;
   }
